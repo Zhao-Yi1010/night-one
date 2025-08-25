@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>口腔挑戰賽：熱狗／氣球／棒棒糖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>口腔挑戰賽</h1>
+
+    <section id="ui">
+      <div class="row">
+        <label>選擇關卡：</label>
+        <select id="mode">
+          <option value="hotdog">嘴巴切熱狗（開合次數）</option>
+          <option value="balloon">吹氣球（連續吹氣）</option>
+          <option value="lollipop">舔棒棒糖（快速開合）</option>
+        </select>
+        <button id="startBtn">開始</button>
+        <button id="resetBtn">重來</button>
+      </div>
+
+      <div class="row">
+        <div>麥克風音量：<span id="volVal">0.00</span></div>
+        <div class="bar"><div id="volBar"></div></div>
+      </div>
+
+      <div class="row">
+        <div>狀態：<span id="stateText">待機</span></div>
+        <div>進度：<span id="progressText">0</span></div>
+        <div>時間：<span id="timeText">00:00</span></div>
+      </div>
+    </section>
+
+    <section id="playfield">
+      <!-- Balloon 圓、Hotdog & Lollipop 以進度條呈現 -->
+      <canvas id="balloon" width="320" height="240"></canvas>
+      <div id="hotdogUI" class="stack">
+        <div class="meter"><div id="hotdogFill"></div></div>
+        <p>咀嚼次數目標：<span id="hotdogGoal">12</span></p>
+      </div>
+      <div id="lollipopUI" class="stack">
+        <div class="meter"><div id="lollipopFill"></div></div>
+        <p>舔一舔（快速開合）目標：<span id="lollipopGoal">20</span></p>
+      </div>
+    </section>
+
+    <section id="result" class="hidden">
+      <h2 id="resultTitle">完成！</h2>
+      <p id="resultDetail"></p>
+      <button id="againBtn">再玩一次</button>
+    </section>
+
+    <p class="hint">小提醒：允許麥克風、盡量在安靜環境；若偵測不穩，可改用「大聲 vs 小聲」策略。</p>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
